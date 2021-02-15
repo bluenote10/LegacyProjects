@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<data>
+
+    <group>
+        <name>Music</name>
+        <color1>#2D8DB7</color1>
+        <color2>#0B73A0</color2>
+    </group>
+
+    <group>
+        <name>Literature</name>
+        <color1>#47C47B</color1>
+        <color2>#1A954D</color2>
+    </group>
+
+    <period>
+        <name>Johann Sebastian Bach</name>
+        <timeS>1685-03-31</timeS>
+        <timeE>1750-07-28</timeE>
+        <link>http://en.wikipedia.org/wiki/Johann_Sebastian_Bach</link>
+        <category>Music</category>
+    </period>
+
+    <period>
+        <name>Wolfgang Amadeus Mozart</name>
+        <timeS>1756-01-27</timeS>
+        <timeE>1791-12-05</timeE>
+        <link>http://en.wikipedia.org/wiki/Johann_Sebastian_Bach</link>
+        <category>Music</category>
+    </period>
+
+    <period>
+        <name>Ludwig van Beethoven</name>
+        <timeS>1770-12-17</timeS>
+        <timeE>1827-03-26</timeE>
+        <link>http://en.wikipedia.org/wiki/Johann_Sebastian_Bach</link>
+        <category>Music</category>
+    </period>
+
+    <period>
+        <name>William Shakespeare</name>
+        <timeS>1564-04-26</timeS>
+        <timeE>1616-04-23</timeE>
+        <link>http://en.wikipedia.org/wiki/William_Shakespeare</link>
+        <category>Literature</category>
+    </period>
+
+    <period>
+        <name>Johann Wolfgang von Goethe</name>
+        <timeS>1749-08-28</timeS>
+        <timeE>1832-03-22</timeE>
+        <link>http://en.wikipedia.org/wiki/Goethe</link>
+        <category>Literature</category>
+    </period>
+
+</data>

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" href="style.css" type="text/css"/>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
+
+<script type="text/javascript" src="js/raphael-min.js"></script>
+
+<script type="text/coffeescript" src="timeline.coffee"></script>
+
+</head>
+
+
+<body>
+
+<div id="container">
+
+    <div id="body">
+
+<!--
+    <div id="paper" style="width: 600px; height: 600px; margin: 0 auto;" overflow: scroll></div>
+<script type="text/javascript">
+    
+    var a = 600;
+    var paperElement = document.getElementById("paper");
+    var paper = Raphael(paperElement,a,a);
+    
+    //draw funky circles
+    var i = 300;
+    while(i > 0) {
+        paper.circle(300,300,i).attr({stroke: "none", fill: Raphael.getColor()});
+        i -= 20;
+    }
+    
+    var bbox = {x: 0, y: 0, width: a, height: a};
+    var viewbox = [0,0,a,a];
+    var zoom = 1;
+    
+    /* transforms screen coordinates into paper coordinates */
+    function transformEventCoords(event) {
+        return {
+            x : event.clientX - paperElement.offsetLeft,
+            y : event.clientY - paperElement.offsetTop
+        };
+    }
+    
+    function doZoom(coords, factor) {
+        
+        //transform real coordinates into viewbox coordinates
+        x = viewbox[0] + coords.x / zoom; 
+        y = viewbox[1] + coords.y / zoom;
+        
+
+        var z = ((zoom || 1) * factor) || 1;
+        if (z < 1 || z > 16) {
+            return;
+        }
+        zoom = z;
+
+        //zoom viewbox dimensions
+        viewbox[2] = bbox.width / zoom;
+        viewbox[3] = bbox.height / zoom;
+
+        //transform coordinates to new viewbox coordinates
+        viewbox[0] = x - coords.x / zoom;
+        viewbox[1] = y - coords.y / zoom;
+        
+        paper.setViewBox.apply(paper, viewbox);
+    }
+    
+    paperElement.addEventListener("click", function(event) {
+        doZoom(transformEventCoords(event), 2); //zoom in
+    });
+    
+</script>
+-->
+    <div id="canvas_container"></div>
+
+    <!--
+    <label for="nick" width: 100px>A:</label> <input type="text" id="a"/><br/>
+    <label for="nick" width: 100px>B:</label> <input type="text" id="b"/><br/>
+    <input type="button" value="Calculate GCD" id="button"/> <br/>
+    C: <span id="c"/>
+    -->
+
+    <div id="infodiv"></div>
+
+    </div>    
+    
+</div>    
+    
+</body>
+
+
+
+</html>
