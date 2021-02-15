@@ -9,7 +9,7 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
-<script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/coffeescript@2.5.1/lib/coffeescript-browser-compiler-legacy/coffeescript.min.js"></script>
 
 <script type="text/javascript" src="js/raphael-min.js"></script>
 
@@ -27,22 +27,22 @@
 <!--
     <div id="paper" style="width: 600px; height: 600px; margin: 0 auto;" overflow: scroll></div>
 <script type="text/javascript">
-    
+
     var a = 600;
     var paperElement = document.getElementById("paper");
     var paper = Raphael(paperElement,a,a);
-    
+
     //draw funky circles
     var i = 300;
     while(i > 0) {
         paper.circle(300,300,i).attr({stroke: "none", fill: Raphael.getColor()});
         i -= 20;
     }
-    
+
     var bbox = {x: 0, y: 0, width: a, height: a};
     var viewbox = [0,0,a,a];
     var zoom = 1;
-    
+
     /* transforms screen coordinates into paper coordinates */
     function transformEventCoords(event) {
         return {
@@ -50,13 +50,13 @@
             y : event.clientY - paperElement.offsetTop
         };
     }
-    
+
     function doZoom(coords, factor) {
-        
+
         //transform real coordinates into viewbox coordinates
-        x = viewbox[0] + coords.x / zoom; 
+        x = viewbox[0] + coords.x / zoom;
         y = viewbox[1] + coords.y / zoom;
-        
+
 
         var z = ((zoom || 1) * factor) || 1;
         if (z < 1 || z > 16) {
@@ -71,14 +71,14 @@
         //transform coordinates to new viewbox coordinates
         viewbox[0] = x - coords.x / zoom;
         viewbox[1] = y - coords.y / zoom;
-        
+
         paper.setViewBox.apply(paper, viewbox);
     }
-    
+
     paperElement.addEventListener("click", function(event) {
         doZoom(transformEventCoords(event), 2); //zoom in
     });
-    
+
 </script>
 -->
     <div id="canvas_container"></div>
@@ -92,10 +92,10 @@
 
     <div id="infodiv"></div>
 
-    </div>    
-    
-</div>    
-    
+    </div>
+
+</div>
+
 </body>
 
 

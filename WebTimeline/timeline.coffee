@@ -55,8 +55,8 @@ groups = {}
 data = []
 
 groups['default'] = {
-    color1: "#AA0050"   
-    color2: "#EE0050"   
+    color1: "#AA0050"
+    color2: "#EE0050"
 }
 
 if myXml == null
@@ -79,7 +79,7 @@ else
             console.log "Error: xml 'group' entry cannot be parsed:", error
             print error
     console.log "final groups: ", groups
-    
+
     # parse periodes
     xmlPeriods = myXml.getElementsByTagName("period")
     console.log 'Visible periods in xml data: ', xmlPeriods
@@ -159,7 +159,7 @@ for obj, i in data
         appendToTable("Duration:", dateDuration(obj.start, obj.end))
         appendToTable("Link:", '<a href="' + obj.link + '">' + obj.link + '</a>')
         $('#infodiv').append(table)
-        
+
         this.animate({ fill: obj.category.color2 }, 10, 'super_elastic');
         )
     rects[i].mouseout( ->
@@ -202,8 +202,8 @@ updateAxis = (minY, maxY) ->
     for tickEl in axisTicks
         tickEl.tick.remove()
         tickEl.labl.remove()
-    axisTicks = []        
-        
+    axisTicks = []
+
     diff = maxY - minY
     incr =  if diff < 50
                 5
@@ -219,9 +219,9 @@ updateAxis = (minY, maxY) ->
                 250
             else if diff < 5000
                 500
-            else 
+            else
                 1000
-    
+
     x = Math.floor(minY/incr) * incr + incr
     while x < maxY
         mappedX = scaling[1]*(new Date(x, 0, 0)).getTime() + scaling[0]
@@ -235,14 +235,14 @@ updateAxis = (minY, maxY) ->
         x = x + incr
 
 updatePositions = ->
-    
+
     visibleRangeL = (0       - scaling[0]) / scaling[1]
     visibleRangeR = (canvasW - scaling[0]) / scaling[1]
     visibleYearL = (new Date(visibleRangeL)).getFullYear()
     visibleYearR = (new Date(visibleRangeR)).getFullYear()
     console.log "Visbible Range: (#{visibleRangeL}, #{visibleRangeR}) = (#{visibleYearL}, #{visibleYearR})"
     updateAxis(visibleYearL, visibleYearR)
-    
+
     for rect, i in rects
         #rects[i] = paper.rect(obj.start, 10*i + 1, obj.end - obj.start, 8)
         obj = data[i]
@@ -254,7 +254,7 @@ updatePositions = ->
         rect.attr(y: newYU)
         rect.attr(width: newXR-newXL)
         rect.attr(height: newYD-newYU)
-        
+
 scaling = [0, 1, 46, 1]; # offset 0, scaling 1
 
 minData = null
@@ -262,7 +262,7 @@ maxData = null
 for obj in data
     minData = obj.start if minData > obj.start or minData == null
     maxData = obj.end if obj.end > maxData or maxData == null
-    
+
 initViewL = 20
 initViewR = canvasW - 20
 
@@ -274,15 +274,15 @@ scaling[0] = initViewL - scaling[1]*minData
 
 updatePositions()
 
-doZoom = (event, delta) -> 
-    
+doZoom = (event, delta) ->
+
     # transform to client coords
     cx = event.clientX - paperElement.offsetLeft
-    cy = event.clientY - paperElement.offsetTop    
+    cy = event.clientY - paperElement.offsetTop
     console.log event
     console.log delta
     console.log cx, cy
-    
+
     oldscalingX = scaling[1]
     oldscalingY = scaling[3]
 
@@ -298,20 +298,20 @@ doZoom = (event, delta) ->
     oldoffsetY = scaling[2]
     scaling[0] = cx - scaling[1]/oldscalingX*(cx - oldoffsetX) #(oldscalingX*cx + scaling[1]*scaling[0] + scaling[1]*cx) / oldscalingX
     scaling[2] = cy - scaling[3]/oldscalingY*(cy - oldoffsetY) #(oldscalingY*cy + scaling[3]*scaling[2] + scaling[3]*cy) / oldscalingY
-    
+
     console.log scaling
     console.log((cx - oldoffsetX) / oldscalingX)
     console.log((cx - scaling[0]) / scaling[1])
     console.log((cy - oldoffsetY) / oldscalingY)
     console.log((cy - scaling[2]) / scaling[3])
-    
+
     # transform coordinates to new viewbox coordinates
     updatePositions()
-    
+
     event.preventDefault()
 
 
-    
+
 
 $("#canvas_container").bind('mousewheel', (event, delta) -> doZoom(event, delta))
 #paperElement.addEventListener("click", (event) -> doZoom(transformEventCoords(event), 2) )
@@ -333,7 +333,7 @@ $('#canvas_container').mousedown( (evt) ->
         evt.stopPropagation();
         evt.preventDefault();
     )
-    
+
 $(document).mouseup( (evt) ->
         clicking = false
         $('#canvas_container').css('cursor', 'default');
@@ -342,18 +342,18 @@ $(document).mouseup( (evt) ->
         lastX = -1
         lastY = -1
     )
-    
+
 $('#canvas_container').mousemove( (evt) ->
-    	if clicking == true
+        if clicking == true
             deltaX = evt.pageX - lastX
             deltaY = evt.pageY - lastY
-            
+
             console.log evt.pageX, evt.pageY, deltaX, deltaY
-            
+
             if lastX != -1
                 scaling[0] = scaling[0] + deltaX
                 scaling[2] = scaling[2] + deltaY
-            
+
             lastX = evt.pageX;
             lastY = evt.pageY;
             updatePositions()
@@ -373,7 +373,7 @@ circ.attr({fill: '#100'})
 
 # circ.node.click -> alert("yes")
 
-circ.node.onmouseover = -> 
+circ.node.onmouseover = ->
     this.style.cursor = 'pointer'
     $("#infodiv").html($("#infodiv").html() + "mouseover<br/>")
     #$("#infodiv").html("test")
@@ -384,14 +384,14 @@ circ.node.onclick = ->
 
 
 ###
-gcd = (a,b) -> 
+gcd = (a,b) ->
     if (b==0) then a else gcd(b, a % b)
 
-$("#button").click -> 
+$("#button").click ->
     $("#c").html "test"
     alert("test")
-    a = $("#a").val() 
-    b = $("#b").val() 
+    a = $("#a").val()
+    b = $("#b").val()
     $("#c").html gcd(a,b)
 ###
 
